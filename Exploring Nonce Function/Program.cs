@@ -1,18 +1,14 @@
-﻿using System.Threading.Channels;
+﻿using System.Diagnostics;
+using System.Threading.Channels;
+using ExploringNonceFunction;
 using ExploringNonceFunction.Core;
 
-int id = 0;
+int id = 1;
 
-string data = "Tranzactie: Rares -> Vlazi";
-Block block = new Block(id++, "00000000000000000000000000", data);
+Blockchain blockchain = new Blockchain();    
 
-Console.WriteLine("User 1 Mines block 1...");
-block.Mine();
-Console.WriteLine($"Block Minat: {block.Hash}");
-Console.WriteLine($"Nonce folosit: {block.Nonce}\n");
+ConsoleHelper.MineAndPrint(id++, "Tranzactie: Rares -> Geani", blockchain);
+ConsoleHelper.MineAndPrint(id++, "Tranzactie: Rares -> Iorgu", blockchain);
 
-Block block2 = new Block(id++, block.Hash, block.Data);
-Console.WriteLine("User 2 Mines block 2...");
-block2.Mine();
-Console.WriteLine($"Block Minat: {block2.Hash}");
-Console.WriteLine($"Nonce folosit: {block2.Nonce}\n");
+Console.WriteLine($"Blockchain este valid: {blockchain.IsValid()}");
+

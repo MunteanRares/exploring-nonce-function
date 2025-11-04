@@ -15,7 +15,7 @@ namespace ExploringNonceFunction.Core
         public string Hash { get; private set; } = string.Empty;
         public DateTime TimeStamp { get; private set; } // Cand s a create blocul
         
-        public Block(int index, string previousHash, string data, int difficulty = 10)
+        public Block(int index, string previousHash, string data, int difficulty)
         {
             Index = index;
             PreviousHash = previousHash;
@@ -24,7 +24,7 @@ namespace ExploringNonceFunction.Core
             TimeStamp = DateTime.UtcNow;
         }
 
-        private string CalculateHash()
+        internal string CalculateHash()
         {
             using (SHA256 sha256 = SHA256.Create())
             {
