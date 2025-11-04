@@ -11,6 +11,7 @@ namespace ExploringNonceFunction.Core
         private readonly List<Block> _blocks = new List<Block>();
         public IEnumerable<Block> Blocks => _blocks;
 
+        // Mineaza si adauga un block in blockchain
         public Block AddBlock(string data, int difficulty = 4)
         {
             string previousHash = _blocks.Count == 0 ? new string('0', 64) : _blocks.Last().Hash;
@@ -22,6 +23,7 @@ namespace ExploringNonceFunction.Core
             return block;
         }
 
+        // Daca blockchainul nu este valid (este corupt din cauza cuiva etc) atunci nu mai este trustworthy.
         public bool IsValid()
         {
             for (int i = 1; i < _blocks.Count; i++)

@@ -24,6 +24,7 @@ namespace ExploringNonceFunction.Core
             TimeStamp = DateTime.UtcNow;
         }
 
+        // Creeaza un hash bazat pe datele blocului (raw string -> hashing the bytes -> returning hashed block as hexadecimal 'x2')
         internal string CalculateHash()
         {
             using (SHA256 sha256 = SHA256.Create())
@@ -39,7 +40,8 @@ namespace ExploringNonceFunction.Core
             }
         }
 
-        public void Mine()
+        // Nonce se incrementeaza pana cand hash-ul are la inceput la fel sau mai multe zerouri date de Difficulty
+        internal void Mine()
         {
             string targetZeroes = new string('0', Difficulty);
             while (true)
