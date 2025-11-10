@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Threading.Channels;
-using ExploringNonceFunction;
+﻿using ExploringNonceFunction;
 using ExploringNonceFunction.Core;
 
 int id = 1;
